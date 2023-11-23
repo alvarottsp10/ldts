@@ -13,5 +13,4 @@ public class Game {
         Runner runner = new Runner();
         runner.runGame();
     }
-
 }
