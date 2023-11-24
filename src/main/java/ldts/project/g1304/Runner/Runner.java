@@ -24,6 +24,7 @@ public class Runner implements Runnable{
     TextGraphics graphics;
     Thread gameTimeFlow;
     KeyProcessor keyProcessor;
+    Menu menu = new Menu();
     int FPS = 60;
     MainCharacter mainCharacter = new MainCharacter();
     public void runGame() {
@@ -39,7 +40,6 @@ public class Runner implements Runnable{
             screen.clear();
             graphics=screen.newTextGraphics();
             startGameTimeFlow();
-
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
         }
@@ -51,6 +51,9 @@ public class Runner implements Runnable{
         gameTimeFlow.start();
     }
 
+    public void startGame(int state) {
+        startGameTimeFlow();
+    }
 
     @Override
     public void run() {

@@ -46,19 +46,19 @@ public class MainCharacter {
     };
 
     public void MoveHeroUp() {
-        y -= 5;
+        y -= 3;
     }
 
     public void MoveHeroDown() {
-        y += 5;
+        y += 3;
     }
 
     public void MoveHeroLeft() {
-        x -= 5;
+        x -= 3;
     }
 
     public void MoveHeroRight() {
-        x += 5;
+        x += 3;
     }
 
     public int HeroX() {

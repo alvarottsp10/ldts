@@ -23,12 +23,17 @@ public class KeyProcessor {
             }
             else {
                 if(key.getKeyType() == actionsToProcess.get(0).getKeyType()) {
-                    if (actionsToProcess.size() < 2) {
+                    if (actionsToProcess.size() < 10) {
+                        actionsToProcess.add(key);
+                        actionsToProcess.add(key);
+                        actionsToProcess.add(key);
+                        actionsToProcess.add(key);
                         actionsToProcess.add(key);
                     }
                 }
                 else{
                     actionsToProcess.clear();
+                    actionsToProcess.add(key);
                     actionsToProcess.add(key);
                     actionsToProcess.add(key);
                     actionsToProcess.add(key);
