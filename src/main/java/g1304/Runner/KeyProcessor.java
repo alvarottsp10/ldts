@@ -1,16 +1,14 @@
-package ldts.project.g1304.Runner;
+package g1304.Runner;
 
-import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.input.KeyStroke;
-import ldts.project.g1304.Runner.MovingObjects.MainCharacter;
+import g1304.Runner.MovingObjects.MainCharacter;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 
 public class KeyProcessor {
     List<KeyStroke> actionsToProcess = new ArrayList<>();
+
 
     public void recieveKey(KeyStroke key) {
         if (key != null) {

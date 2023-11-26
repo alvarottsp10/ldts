@@ -1,22 +1,19 @@
-package ldts.project.g1304.Runner;
+package g1304.Runner;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.screen.Screen;
+import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
-import ldts.project.g1304.Runner.KeyProcessor;
-import com.googlecode.lanterna.screen.TerminalScreen;
-import ldts.project.g1304.Runner.MovingObjects.MainCharacter;
-import ldts.project.g1304.screen.BuildScreen;
+import g1304.Runner.KeyProcessor;
+import g1304.Runner.MovingObjects.MainCharacter;
 
-import javax.swing.*;
 import java.awt.*;
+import java.awt.Menu;
 import java.io.IOException;
 
 public class Runner implements Runnable{
@@ -24,7 +21,7 @@ public class Runner implements Runnable{
     TextGraphics graphics;
     Thread gameTimeFlow;
     KeyProcessor keyProcessor;
-    Menu menu = new Menu();
+    java.awt.Menu menu = new Menu();
     int FPS = 60;
     MainCharacter mainCharacter = new MainCharacter();
     public void runGame() {

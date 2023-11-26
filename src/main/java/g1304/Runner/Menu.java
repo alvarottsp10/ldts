@@ -1,4 +1,4 @@
-package ldts.project.g1304.Runner;
+package g1304.Runner;
 
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;

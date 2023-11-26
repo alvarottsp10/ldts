@@ -1,8 +1,4 @@
-package ldts.project.g1304.Runner.MovingObjects;
-
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextColor;
+package g1304.Runner.MovingObjects;
 
 public class MainCharacter {
     int x = 50;
