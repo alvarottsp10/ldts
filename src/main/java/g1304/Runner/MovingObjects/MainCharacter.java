@@ -1,8 +1,17 @@
 package g1304.Runner.MovingObjects;
 
+import g1304.Position;
+import g1304.Runner.GameMap;
+import g1304.Runner.KeyProcessor;
+
 public class MainCharacter {
-    int x = 50;
-    int y = 20;
+    Position position;
+
+    private KeyProcessor keyProcessor;
+
+    private GameMap map;
+    private MovementController movementController;
+
 
     public static final String[] mainCharacterModel = {
             "    ######",
@@ -42,28 +51,36 @@ public class MainCharacter {
     };
 
     public void MoveHeroUp() {
-        y -= 3;
+        movementController.MoveUp(position);
     }
 
     public void MoveHeroDown() {
-        y += 3;
+        movementController.MoveDown(position);
     }
 
     public void MoveHeroLeft() {
-        x -= 3;
+        movementController.MoveLeft(position);
     }
 
     public void MoveHeroRight() {
-        x += 3;
+        movementController.MoveRight(position);
     }
 
     public int HeroX() {
-        return x;
+        return position.getX();
     }
 
     public int HeroY() {
-        return y;
+        return position.getY();
     }
+
+     public MainCharacter(int x, int y, GameMap map_, KeyProcessor keyProcessor_) {
+        position = new Position(x, y);
+        map = map_;
+        movementController = new MovementController(map.GetWalls());
+        keyProcessor = keyProcessor_;
+
+     }
 
 
 }
