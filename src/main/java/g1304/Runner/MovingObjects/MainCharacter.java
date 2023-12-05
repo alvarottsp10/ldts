@@ -7,7 +7,8 @@ import g1304.Runner.KeyProcessor;
 public class MainCharacter {
     Position position;
 
-    private KeyProcessor keyProcessor;
+    String[] CurrentSprite = mainCharacterModel;
+
 
     private GameMap map;
     private MovementController movementController;
@@ -74,13 +75,28 @@ public class MainCharacter {
         return position.getY();
     }
 
-     public MainCharacter(int x, int y, GameMap map_, KeyProcessor keyProcessor_) {
+     public MainCharacter(int x, int y, GameMap map_) {
         position = new Position(x, y);
         map = map_;
         movementController = new MovementController(map.GetWalls());
-        keyProcessor = keyProcessor_;
 
      }
 
+     public MovementController getMovementController() {
+        return movementController;
+     }
+
+     public String[] getCurrentSprite() {
+        return CurrentSprite;
+     }
+
+     public void setCurrentSprite(String state) {
+        switch (state) {
+            case("walking") -> CurrentSprite = mainCharacterModelWalking;
+            case("standing") -> CurrentSprite = mainCharacterModel;
+        }
+
+
+     }
 
 }

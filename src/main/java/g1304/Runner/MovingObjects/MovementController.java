@@ -16,25 +16,25 @@ public class MovementController {
     }
     public void MoveUp(Position position) {
         if (CanMoveUp(position)) {
-            position.addToY(-8);
+            position.addToY(-16);
         }
     }
 
     public void MoveDown(Position position) {
         if (CanMoveDown(position)) {
-            position.addToY(8);
+            position.addToY(16);
         }
     }
 
     public void MoveLeft(Position position) {
         if (CanMoveLeft(position)) {
-            position.addToX(-8);
+            position.addToX(-16);
         }
     }
 
     public void MoveRight(Position position) {
         if (CanMoveRight(position)) {
-            position.addToX(8);
+            position.addToX(16);
         }
     }
 

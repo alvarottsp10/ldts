@@ -8,7 +8,9 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
 import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
+import g1304.Runner.MovingObjects.AttackController;
 import g1304.Runner.MovingObjects.MainCharacter;
 
 import java.awt.*;
@@ -19,33 +21,48 @@ public class Runner implements Runnable{
     TerminalScreen screen;
     TextGraphics graphics;
     GameMap map = new GameMap();
+
     
     Thread gameTimeFlow;
     KeyProcessor keyProcessor;
+    AttackController attackController;
     MainCharacter mainCharacter;
     SlimeCollision slimeCollision;
+    CharacterController characterController;
     java.awt.Menu menu = new Menu();
     int FPS = 60;
     
     public void runGame() {
-        try {
             Font font = new Font(Font.MONOSPACED, Font.PLAIN, 2);
             AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true, AWTTerminalFontConfiguration.BoldMode.NOTHING, font);
-            Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(768, 576)).setTerminalEmulatorFontConfiguration(cfg).createTerminal();
-            keyProcessor = new KeyProcessor();
+        Terminal terminal = null;
+        try {
+            terminal = new DefaultTerminalFactory().setForceAWTOverSwing(true).setInitialTerminalSize(new TerminalSize(768, 576)).setTerminalEmulatorFontConfiguration(cfg).createTerminal();
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+        map.ReadElements();
+        mainCharacter =  new MainCharacter(48,160, map);
+        attackController = new AttackController(map.slimes, mainCharacter);
+        keyProcessor = new KeyProcessor(mainCharacter, attackController);
+        characterController = new CharacterController(mainCharacter, keyProcessor);
+        try {
             screen = new TerminalScreen(terminal);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+        ((AWTTerminalFrame)screen.getTerminal()).getComponent(0).addKeyListener(keyProcessor);
             screen.setCursorPosition(null);   // We don't need a cursor
+        try {
             screen.startScreen();// Screens must be started
-            screen.doResizeIfNecessary();     // Resize screen if necessary
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+        screen.doResizeIfNecessary();     // Resize screen if necessary
             screen.clear();
             graphics=screen.newTextGraphics();
-            map.ReadElements();
-            mainCharacter =  new MainCharacter(48,160, map, keyProcessor);
             slimeCollision = new SlimeCollision(mainCharacter, map.slimes);
             startGameTimeFlow();
-        } catch (Exception e) {
-            System.out.println("Erro: " + e.getMessage());
-        }
     }// Represents the time in the game
 
     //Starts the time flow of the game
@@ -85,12 +102,7 @@ public class Runner implements Runnable{
         map.Draw(graphics);
         String[] drawing;
 
-        if (keyProcessor.actionsToProcess.isEmpty()) {
-            drawing = MainCharacter.mainCharacterModel;
-        }
-        else {
-            drawing = MainCharacter.mainCharacterModelWalking;
-        }
+        drawing = mainCharacter.getCurrentSprite();
             int y = 0;
             for (String s : drawing){
                 for (int x = 0; x < s.length(); x++) {
@@ -125,11 +137,6 @@ public class Runner implements Runnable{
     }
 
     public void update() {
-        try {
-            keyProcessor.recieveKey(screen.pollInput());
-            keyProcessor.processKey( mainCharacter);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        characterController.MoveCharacter();
     }
 }

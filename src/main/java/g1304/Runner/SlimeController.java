@@ -29,19 +29,15 @@ public class SlimeController implements Runnable {
     void passiveMovement(Slime slime) {
         if (movementController.CanMoveDown(new Position(slime.getX(), slime.getY())) && slime.getLastMovement() == "Down") {
             movementController.MoveDown(slime.getPosition());
-            movementController.MoveDown(slime.getPosition());
         }
         else if (!movementController.CanMoveDown(new Position(slime.getX(), slime.getY())) && slime.getLastMovement() == "Down") {
-            movementController.MoveUp(slime.getPosition());
             movementController.MoveUp(slime.getPosition());
             slime.setLastMovement("Up");
         }
         else if(movementController.CanMoveUp(new Position(slime.getX(), slime.getY())) && slime.getLastMovement() == "Up") {
             movementController.MoveUp(slime.getPosition());
-            movementController.MoveUp(slime.getPosition());
         }
         else if (!movementController.CanMoveUp(new Position(slime.getX(), slime.getY())) && slime.getLastMovement() == "Up") {
-            movementController.MoveDown(slime.getPosition());
             movementController.MoveDown(slime.getPosition());
             slime.setLastMovement("Down");
         }
