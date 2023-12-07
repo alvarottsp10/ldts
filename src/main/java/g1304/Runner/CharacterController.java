@@ -5,7 +5,7 @@ import g1304.Runner.MovingObjects.MainCharacter;
 public class CharacterController {
     MainCharacter mainCharacter;
 
-    KeyProcessor keyProcessor;
+    GameKeyProcessor keyProcessor;
    void MoveCharacter() {
        if (keyProcessor.isDownPressed()) {
            mainCharacter.MoveHeroDown();
@@ -28,7 +28,7 @@ public class CharacterController {
        }
    }
 
-   CharacterController(MainCharacter mainCharacter1, KeyProcessor keyProcessor1) {
+   CharacterController(MainCharacter mainCharacter1, GameKeyProcessor keyProcessor1) {
        mainCharacter = mainCharacter1;
        keyProcessor = keyProcessor1;
    }

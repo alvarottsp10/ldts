@@ -2,7 +2,6 @@ package g1304.Runner.MovingObjects;
 
 import g1304.Position;
 import g1304.Runner.GameMap;
-import g1304.Runner.KeyProcessor;
 
 public class MainCharacter {
     Position position;
