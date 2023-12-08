@@ -5,6 +5,10 @@ import g1304.Position;
 public class Slime {
     private Position position;
 
+    int lives = 2;
+
+    String status = "Alive";
+
     private String LastMovement = "Down";
     public static final String[] SlimeModel = {
             "",
@@ -48,4 +52,15 @@ public class Slime {
     public String getLastMovement() {
         return LastMovement;
     }
+
+    public boolean isDead() {
+        return lives <= 0;
+    }
+
+
+    public void DamageSlime(int damage) {
+        lives -= damage;
+    }
+
+
 }

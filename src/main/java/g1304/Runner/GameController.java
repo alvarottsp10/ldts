@@ -66,6 +66,14 @@ public class GameController implements Runnable {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+            if (mainCharacter.isDead()) {
+                gameTimeFlow = null;
+            }
+        }
+        try {
+            screen.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 

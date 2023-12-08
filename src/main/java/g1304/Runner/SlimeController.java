@@ -16,7 +16,9 @@ public class SlimeController implements Runnable {
     public void run() {
         while (slimeTimeFlow != null) {
             for(Slime slime: slimes) {
-                passiveMovement(slime);
+                if (!slime.isDead()) {
+                    passiveMovement(slime);
+                }
             }
             try {
                 Thread.sleep(500);

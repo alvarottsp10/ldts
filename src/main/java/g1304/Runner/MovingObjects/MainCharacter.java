@@ -5,6 +5,8 @@ import g1304.Runner.GameMap;
 
 public class MainCharacter {
     Position position;
+    int lives = 10;
+    String status = "Alive";
 
     String[] CurrentSprite = mainCharacterModel;
 
@@ -94,8 +96,21 @@ public class MainCharacter {
             case("walking") -> CurrentSprite = mainCharacterModelWalking;
             case("standing") -> CurrentSprite = mainCharacterModel;
         }
-
-
      }
 
+     public boolean isDead() {
+         return !status.equals("Alive");
+     }
+
+     public void Kill() {
+        status = "Dead";
+     }
+
+     public void DamagePlayer(int damage) {
+        lives -= damage;
+     }
+
+     public int getLives() {
+        return lives;
+     }
 }

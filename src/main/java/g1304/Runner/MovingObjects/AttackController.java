@@ -14,6 +14,7 @@ public class AttackController {
         for(Slime slime: slimes) {
             if(slime.getX() == mainCharacter.HeroX() && slime.getY() == mainCharacter.HeroY() -16) {
                 movementController.MoveUp(slime.getPosition());
+                slime.DamageSlime(1);
             }
         }
     }
@@ -22,6 +23,7 @@ public class AttackController {
         for(Slime slime: slimes) {
             if(slime.getX() == mainCharacter.HeroX() && slime.getY() == mainCharacter.HeroY()  + 16) {
                 movementController.MoveDown(slime.getPosition());
+                slime.DamageSlime(1);
             }
         }
     }
@@ -30,6 +32,7 @@ public class AttackController {
         for(Slime slime: slimes) {
             if(slime.getX() == mainCharacter.HeroX() - 16 && slime.getY() == mainCharacter.HeroY()) {
                 movementController.MoveLeft(slime.getPosition());
+                slime.DamageSlime(1);
             }
         }
     }
@@ -38,6 +41,7 @@ public class AttackController {
         for(Slime slime: slimes) {
             if(slime.getX() == mainCharacter.HeroX() +16 && slime.getY() == mainCharacter.HeroY()  + 16) {
                 movementController.MoveRight(slime.getPosition());
+                slime.DamageSlime(1);
             }
         }
     }

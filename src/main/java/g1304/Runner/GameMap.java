@@ -65,29 +65,32 @@ public class GameMap {
 
         String[] drawing = slimes.get(0).SlimeModel;
         for (Slime slime:slimes) {
-            int y = 0;
-            for(String s : drawing) {
-                for (int x = 0; x < s.length(); x++) {
-                    if (s.charAt(x) == '#') {
-                        graphics.setBackgroundColor(TextColor.Factory.fromString("blue"));
-                        graphics.fillRectangle(new TerminalPosition(slime.getX() + x, slime.getY() + y + 1), new TerminalSize(1, 1), ' ');
-                    }
-                    if (s.charAt(x) == 'W') {
-                        graphics.setBackgroundColor(TextColor.Factory.fromString("white"));
-                        graphics.fillRectangle(new TerminalPosition(slime.getX() + x, slime.getY() + y + 1), new TerminalSize(1, 1), ' ');
-                    }
-                    if (s.charAt(x) == 'R') {
-                        graphics.setBackgroundColor(TextColor.Factory.fromString("red"));
-                        graphics.fillRectangle(new TerminalPosition(slime.getX() + x, slime.getY() + y + 1), new TerminalSize(1, 1), ' ');
-                    }
+            if (!slime.isDead()) {
+                int y = 0;
+                for(String s : drawing) {
+                    for (int x = 0; x < s.length(); x++) {
+                        if (s.charAt(x) == '#') {
+                            graphics.setBackgroundColor(TextColor.Factory.fromString("blue"));
+                            graphics.fillRectangle(new TerminalPosition(slime.getX() + x, slime.getY() + y + 1), new TerminalSize(1, 1), ' ');
+                        }
+                        if (s.charAt(x) == 'W') {
+                            graphics.setBackgroundColor(TextColor.Factory.fromString("white"));
+                            graphics.fillRectangle(new TerminalPosition(slime.getX() + x, slime.getY() + y + 1), new TerminalSize(1, 1), ' ');
+                        }
+                        if (s.charAt(x) == 'R') {
+                            graphics.setBackgroundColor(TextColor.Factory.fromString("red"));
+                            graphics.fillRectangle(new TerminalPosition(slime.getX() + x, slime.getY() + y + 1), new TerminalSize(1, 1), ' ');
+                        }
 
-                    if (s.charAt(x) == 'X') {
-                        graphics.setBackgroundColor(TextColor.Factory.fromString("green"));
-                        graphics.fillRectangle(new TerminalPosition(slime.getX() + x, slime.getY() + y + 1), new TerminalSize(1, 1), ' ');
+                        if (s.charAt(x) == 'X') {
+                            graphics.setBackgroundColor(TextColor.Factory.fromString("green"));
+                            graphics.fillRectangle(new TerminalPosition(slime.getX() + x, slime.getY() + y + 1), new TerminalSize(1, 1), ' ');
+                        }
                     }
+                    y++;
                 }
-                y++;
             }
+
             }
 
 

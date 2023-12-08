@@ -33,8 +33,14 @@ public class SlimeCollision {
 
     public void CheckCollisions() {
         for (Slime slime: slimes) {
-            if (SlimeHitsCharacter(slime)) {
-                SlimeAttack(slime);
+            if (!slime.isDead()) {
+                if (SlimeHitsCharacter(slime)) {
+                    mainCharacter.DamagePlayer(2);
+                    SlimeAttack(slime);
+                    if (mainCharacter.getLives() == 0) {
+                        mainCharacter.Kill();
+                    }
+                }
             }
         }
     }
