@@ -1,6 +1,7 @@
 package g1304.Runner;
 
 import g1304.Position;
+import g1304.Runner.MovingObjects.MainCharacter;
 import g1304.Runner.MovingObjects.Monsters.Slime;
 import g1304.Runner.MovingObjects.MovementController;
 
@@ -10,6 +11,8 @@ import java.util.List;
 public class SlimeController implements Runnable {
     List<Slime> slimes = new ArrayList<>();
     MovementController movementController;
+    MainCharacter mainCharacter;
+    Ruler ruler = new Ruler();
 
     Thread slimeTimeFlow = new Thread(this);
     @Override
@@ -17,11 +20,16 @@ public class SlimeController implements Runnable {
         while (slimeTimeFlow != null) {
             for(Slime slime: slimes) {
                 if (!slime.isDead()) {
-                    passiveMovement(slime);
+                    if (ruler.getDistance(mainCharacter.getPosition(), slime.getPosition()) > 160) {
+                        passiveMovement(slime);
+                    }
+                    else {
+                        chaseMovement(slime, mainCharacter);
+                    }
                 }
             }
             try {
-                Thread.sleep(500);
+                Thread.sleep(300);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -46,9 +54,29 @@ public class SlimeController implements Runnable {
 
     }
 
-    SlimeController(List<Wall> walls, List<Slime> slimes_) {
+    void chaseMovement(Slime slime, MainCharacter mainCharacter) {
+        if (slime.getX() == mainCharacter.HeroX()) {
+            if (slime.getY() > mainCharacter.HeroY()) {
+                movementController.MoveUp(slime.getPosition());
+            }
+            else {
+                movementController.MoveDown(slime.getPosition());
+            }
+        }
+        else {
+            if (slime.getX() > mainCharacter.HeroX()) {
+                movementController.MoveLeft(slime.getPosition());
+            }
+            else {
+                movementController.MoveRight(slime.getPosition());
+            }
+        }
+    }
+
+    SlimeController(List<Wall> walls, List<Slime> slimes_, MainCharacter mainCharacter1) {
         movementController = new MovementController(walls);
         slimes = slimes_;
+        mainCharacter = mainCharacter1;
     }
 
     void StartSlimes() {

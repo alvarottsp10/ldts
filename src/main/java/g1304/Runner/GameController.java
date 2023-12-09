@@ -27,7 +27,7 @@ public class GameController implements Runnable {
     public void StartState() {
         screen = screenBuilder.BuildGameScreen();
         map.ReadElements();
-        mainCharacter =  new MainCharacter(48,160, map);
+        mainCharacter =  map.mainCharacter;
         attackController = new AttackController(map.slimes, mainCharacter);
         keyProcessor = new GameKeyProcessor(mainCharacter, attackController );
         characterController = new CharacterController(mainCharacter, keyProcessor);

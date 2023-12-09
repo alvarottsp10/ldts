@@ -5,6 +5,7 @@ import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import g1304.Position;
+import g1304.Runner.MovingObjects.MainCharacter;
 import g1304.Runner.MovingObjects.Monsters.Slime;
 
 import java.io.BufferedReader;
@@ -20,6 +21,7 @@ public class GameMap {
 
     List<Wall> walls = new ArrayList<>();
     List<Slime> slimes = new ArrayList<>();
+    MainCharacter mainCharacter;
     String[] level1 = new String[]{"g1304.resources.level_1_map"};
 
     public void ReadElements() {
@@ -43,13 +45,17 @@ public class GameMap {
                         Slime slime = new Slime(new Position(x*16, y*16));
                         slimes.add(slime);
                     }
+
+                    else if(currentChar == 'M') {
+                        mainCharacter = new MainCharacter(x*16, y*16, walls);
+                    }
                 }
                 y++;
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        SlimeController slimeController = new SlimeController(walls, slimes);
+        SlimeController slimeController = new SlimeController(walls, slimes, mainCharacter);
         slimeController.StartSlimes();
     }
     public void Draw(TextGraphics graphics) {

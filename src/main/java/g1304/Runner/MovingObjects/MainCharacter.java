@@ -2,6 +2,9 @@ package g1304.Runner.MovingObjects;
 
 import g1304.Position;
 import g1304.Runner.GameMap;
+import g1304.Runner.Wall;
+
+import java.util.List;
 
 public class MainCharacter {
     Position position;
@@ -76,10 +79,9 @@ public class MainCharacter {
         return position.getY();
     }
 
-     public MainCharacter(int x, int y, GameMap map_) {
+     public MainCharacter(int x, int y, List<Wall> walls) {
         position = new Position(x, y);
-        map = map_;
-        movementController = new MovementController(map.GetWalls());
+        movementController = new MovementController(walls);
 
      }
 
@@ -112,5 +114,9 @@ public class MainCharacter {
 
      public int getLives() {
         return lives;
+     }
+
+     public Position getPosition() {
+        return position;
      }
 }
