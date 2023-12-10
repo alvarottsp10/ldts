@@ -1,8 +1,8 @@
-package g1304.Runner.MovingObjects;
+package g1304.Runner.Controller;
 
-import g1304.Collider;
-import g1304.Position;
-import g1304.Runner.Wall;
+import g1304.Runner.Helpers.Collider;
+import g1304.Runner.MovingObjects.Position;
+import g1304.Runner.MovingObjects.Wall;
 
 import java.util.List;
 

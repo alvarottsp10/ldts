@@ -1,5 +1,6 @@
-package g1304.Runner;
+package g1304.Runner.Controller;
 
+import g1304.Runner.KeyProcessor.GameKeyProcessor;
 import g1304.Runner.MovingObjects.MainCharacter;
 
 public class CharacterController {

@@ -1,4 +1,4 @@
-package g1304.Runner;
+package g1304.Runner.Controller;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
@@ -6,8 +6,12 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
+import g1304.Runner.Builders.GameMap;
+import g1304.Runner.Builders.ScreenBuilder;
+import g1304.Runner.KeyProcessor.GameKeyProcessor;
 import g1304.Runner.MovingObjects.AttackController;
 import g1304.Runner.MovingObjects.MainCharacter;
+import g1304.Runner.MovingObjects.Monsters.SlimeCollision;
 
 import java.io.IOException;
 

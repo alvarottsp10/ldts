@@ -1,12 +1,14 @@
-package g1304.Runner;
+package g1304.Runner.Builders;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import g1304.Position;
+import g1304.Runner.MovingObjects.Position;
+import g1304.Runner.Controller.SlimeController;
 import g1304.Runner.MovingObjects.MainCharacter;
 import g1304.Runner.MovingObjects.Monsters.Slime;
+import g1304.Runner.MovingObjects.Wall;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -20,8 +22,8 @@ import java.util.List;
 public class GameMap {
 
     List<Wall> walls = new ArrayList<>();
-    List<Slime> slimes = new ArrayList<>();
-    MainCharacter mainCharacter;
+    public List<Slime> slimes = new ArrayList<>();
+    public MainCharacter mainCharacter;
     String[] level1 = new String[]{"g1304.resources.level_1_map"};
 
     public void ReadElements() {

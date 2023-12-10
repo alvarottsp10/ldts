@@ -1,10 +1,10 @@
-package g1304.Runner;
+package g1304.Runner.Builders;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.screen.Screen;
+import g1304.Runner.MovingObjects.Wall;
 
 import java.io.*;
 import java.nio.charset.Charset;

@@ -1,7 +1,8 @@
-package g1304;
+package g1304.Runner.Helpers;
 
 import g1304.Runner.MovingObjects.Monsters.Slime;
-import g1304.Runner.Wall;
+import g1304.Runner.MovingObjects.Position;
+import g1304.Runner.MovingObjects.Wall;
 
 import java.util.List;
 

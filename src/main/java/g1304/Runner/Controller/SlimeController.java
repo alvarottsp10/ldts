@@ -1,9 +1,10 @@
-package g1304.Runner;
+package g1304.Runner.Controller;
 
-import g1304.Position;
+import g1304.Runner.MovingObjects.Position;
 import g1304.Runner.MovingObjects.MainCharacter;
 import g1304.Runner.MovingObjects.Monsters.Slime;
-import g1304.Runner.MovingObjects.MovementController;
+import g1304.Runner.Helpers.Ruler;
+import g1304.Runner.MovingObjects.Wall;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,13 +74,13 @@ public class SlimeController implements Runnable {
         }
     }
 
-    SlimeController(List<Wall> walls, List<Slime> slimes_, MainCharacter mainCharacter1) {
+    public SlimeController(List<Wall> walls, List<Slime> slimes_, MainCharacter mainCharacter1) {
         movementController = new MovementController(walls);
         slimes = slimes_;
         mainCharacter = mainCharacter1;
     }
 
-    void StartSlimes() {
+    public void StartSlimes() {
         slimeTimeFlow.start();
     }
 }

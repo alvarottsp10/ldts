@@ -1,10 +1,11 @@
-package g1304.Runner;
+package g1304.Runner.Builders;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.TerminalScreen;
+import g1304.Runner.State.MenuState;
 
 import java.io.IOException;
 
@@ -12,7 +13,7 @@ public class MenuViewer {
     TextGraphics graphics;
     TerminalScreen screen;
 
-    MenuState menuState = new MenuState();
+    MenuState menuState;
     public static final String[] StartModel= {
             " #####  #####  #####  #####  #####",
             "##        #   ##   ## ##   #   #",
@@ -66,9 +67,10 @@ public class MenuViewer {
         }
     }
 
-    MenuViewer(TerminalScreen screen1, TextGraphics graphics1) {
+    public MenuViewer(TerminalScreen screen1, TextGraphics graphics1, MenuState menuState1) {
         screen = screen1;
         graphics = graphics1;
+        menuState = menuState1;
     }
 }
 

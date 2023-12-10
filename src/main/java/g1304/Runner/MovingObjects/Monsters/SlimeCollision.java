@@ -1,4 +1,4 @@
-package g1304.Runner;
+package g1304.Runner.MovingObjects.Monsters;
 
 import g1304.Runner.MovingObjects.MainCharacter;
 import g1304.Runner.MovingObjects.Monsters.Slime;
@@ -45,7 +45,7 @@ public class SlimeCollision {
         }
     }
 
-    SlimeCollision(MainCharacter mainCharacter_, List<Slime> slimes_) {
+    public SlimeCollision(MainCharacter mainCharacter_, List<Slime> slimes_) {
         mainCharacter = mainCharacter_;
         slimes = slimes_;
     }

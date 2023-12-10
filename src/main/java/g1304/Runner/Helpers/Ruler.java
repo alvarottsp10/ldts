@@ -1,6 +1,6 @@
-package g1304.Runner;
+package g1304.Runner.Helpers;
 
-import g1304.Position;
+import g1304.Runner.MovingObjects.Position;
 
 import static java.lang.Math.*;
 

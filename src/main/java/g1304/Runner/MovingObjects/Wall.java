@@ -1,11 +1,11 @@
-package g1304.Runner;
+package g1304.Runner.MovingObjects;
 
-import g1304.Position;
+import g1304.Runner.MovingObjects.Position;
 
 public class Wall {
     private Position wallPosition;
 
-    Wall(int x, int y) {
+    public Wall(int x, int y) {
         wallPosition = new Position(x, y);
     }
 

@@ -1,14 +1,12 @@
-package g1304.Runner;
+package g1304.Runner.KeyProcessor;
 
 import com.googlecode.lanterna.input.KeyStroke;
-
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import g1304.Runner.State.MenuState;
 
 public class MenuKeyProcessor {
-    MenuState menuState = new MenuState();
+    MenuState menuState;
 
-    void ProcessKey(KeyStroke key) {
+    public void ProcessKey(KeyStroke key) {
         switch (key.getKeyType()) {
             case ArrowUp -> {
                 if(menuState.getState().equals("Exit Game")) {
@@ -21,6 +19,10 @@ public class MenuKeyProcessor {
                 }
             }
         }
+    }
+
+    public MenuKeyProcessor(MenuState menuState1) {
+        menuState = menuState1;
     }
 
 }

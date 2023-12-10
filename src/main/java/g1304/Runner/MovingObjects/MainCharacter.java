@@ -1,8 +1,7 @@
 package g1304.Runner.MovingObjects;
 
-import g1304.Position;
-import g1304.Runner.GameMap;
-import g1304.Runner.Wall;
+import g1304.Runner.Controller.MovementController;
+import g1304.Runner.Builders.GameMap;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package g1304.Runner;
+package g1304.Runner.Builders;
 
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.screen.Screen;
@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class ScreenBuilder {
     Screen screen;
-    TerminalScreen BuildGameScreen() {
+    public TerminalScreen BuildGameScreen() {
         Font font = new Font(Font.MONOSPACED, Font.PLAIN, 2);
         AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true, AWTTerminalFontConfiguration.BoldMode.NOTHING, font);
         Terminal terminal = null;
