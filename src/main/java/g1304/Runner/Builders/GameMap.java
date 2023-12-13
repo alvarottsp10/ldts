@@ -24,10 +24,16 @@ public class GameMap {
     List<Wall> walls = new ArrayList<>();
     public List<Slime> slimes = new ArrayList<>();
     public MainCharacter mainCharacter;
-    String[] level1 = new String[]{"g1304.resources.level_1_map"};
+    SlimeController slimeController;
+    int level;
 
-    public void ReadElements() {
-        String mapName = "level_1_map";
+    public static void ReadElements() {
+        String mapName = "";
+        switch (level) {
+            case(1) -> mapName = "level_1_map";
+            case(2) -> mapName = "level_2_map";
+            case(3) -> mapName = "level_3_map";
+        }
         String rootPath = new File(System.getProperty("user.dir")).getPath();
         String mapLocation = rootPath + "/project-l13gr04-master/src/main/java/g1304/resources/" + mapName;
 
@@ -44,12 +50,12 @@ public class GameMap {
                         walls.add(wall);
                     }
                     else if(currentChar == 'D') {
-                        Slime slime = new Slime(new Position(x*16, y*16));
+                        Slime slime = new Slime(new Position(x*16, y*16), level);
                         slimes.add(slime);
                     }
 
                     else if(currentChar == 'M') {
-                        mainCharacter = new MainCharacter(x*16, y*16, walls);
+                        mainCharacter = new MainCharacter(x*16, y*16, walls, slimes);
                     }
                 }
                 y++;
@@ -57,8 +63,7 @@ public class GameMap {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        SlimeController slimeController = new SlimeController(walls, slimes, mainCharacter);
-        slimeController.StartSlimes();
+        slimeController = new SlimeController(walls, slimes, mainCharacter);
     }
     public void Draw(TextGraphics graphics) {
         for (Wall wall : walls) {
@@ -99,12 +104,42 @@ public class GameMap {
                 }
             }
 
+        }
+
+        for (int i = 0; i < mainCharacter.getLives(); i++) {
+            int y = 0;
+            for(String s : mainCharacter.getHeartModel()) {
+                for (int x = 0; x < s.length(); x++) {
+                    if (s.charAt(x) == '#') {
+                        graphics.setBackgroundColor(TextColor.Factory.fromString("white"));
+                        graphics.fillRectangle(new TerminalPosition(x + 20 * i, y + 1), new TerminalSize(1, 1), ' ');
+                    }
+                    if (s.charAt(x) == 'R') {
+                        graphics.setBackgroundColor(TextColor.Factory.fromString("red"));
+                        graphics.fillRectangle(new TerminalPosition( x + 20 * i, y + 1), new TerminalSize(1, 1), ' ');
+                    }
+
+                }
+                y++;
             }
 
+        }
 
     }
 
     public List<Wall> GetWalls() {
         return walls;
+    }
+
+    public void StartMonsters() {
+        slimeController.StartSlimes();
+    }
+
+    public void StopMonsters() {
+        slimeController.stopSlimes();
+    }
+
+    public GameMap(int level_) {
+        level = level_;
     }
 }

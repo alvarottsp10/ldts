@@ -18,7 +18,7 @@ public class Collider {
 
     public boolean CollideWithSlime(Position pos, List<Slime> slimes) {
         for(Slime slime: slimes) {
-            if (pos.getX() == slime.getX() && pos.getY() == slime.getY()) {
+            if (pos.getX() == slime.getX() && pos.getY() == slime.getY() && !slime.isDead()) {
                 return true;
             }
         }

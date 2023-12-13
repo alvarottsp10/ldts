@@ -15,10 +15,12 @@ public class SlimeController implements Runnable {
     MainCharacter mainCharacter;
     Ruler ruler = new Ruler();
 
+    boolean running = true;
+
     Thread slimeTimeFlow = new Thread(this);
     @Override
     public void run() {
-        while (slimeTimeFlow != null) {
+        while (running) {
             for(Slime slime: slimes) {
                 if (!slime.isDead()) {
                     if (ruler.getDistance(mainCharacter.getPosition(), slime.getPosition()) > 160) {
@@ -35,6 +37,7 @@ public class SlimeController implements Runnable {
                 throw new RuntimeException(e);
             }
         }
+        slimeTimeFlow.interrupt();
     }
 
     void passiveMovement(Slime slime) {
@@ -64,7 +67,7 @@ public class SlimeController implements Runnable {
                 movementController.MoveDown(slime.getPosition());
             }
         }
-        else {
+        else if (slime.getY() == mainCharacter.HeroY()){
             if (slime.getX() > mainCharacter.HeroX()) {
                 movementController.MoveLeft(slime.getPosition());
             }
@@ -72,15 +75,44 @@ public class SlimeController implements Runnable {
                 movementController.MoveRight(slime.getPosition());
             }
         }
+
+        else {
+            if (slime.getX() > mainCharacter.HeroX()) {
+                if (slime.getY() > mainCharacter.HeroY()) {
+                    movementController.MoveUp(slime.getPosition());
+                    movementController.MoveLeft(slime.getPosition());
+                }
+                else if (slime.getY() < mainCharacter.HeroY()) {
+                    movementController.MoveDown(slime.getPosition());
+                    movementController.MoveLeft(slime.getPosition());
+                }
+            }
+
+            else if (slime.getX() < mainCharacter.HeroX()) {
+                if (slime.getY() > mainCharacter.HeroY()) {
+                    movementController.MoveUp(slime.getPosition());
+                    movementController.MoveRight(slime.getPosition());
+                }
+                else if (slime.getY() < mainCharacter.HeroY()) {
+                    movementController.MoveDown(slime.getPosition());
+                    movementController.MoveRight(slime.getPosition());
+                }
+            }
+        }
     }
 
     public SlimeController(List<Wall> walls, List<Slime> slimes_, MainCharacter mainCharacter1) {
-        movementController = new MovementController(walls);
+        movementController = new MovementController(walls, slimes_);
         slimes = slimes_;
         mainCharacter = mainCharacter1;
     }
 
     public void StartSlimes() {
         slimeTimeFlow.start();
+    }
+
+
+    public void stopSlimes() {
+        running = false;
     }
 }

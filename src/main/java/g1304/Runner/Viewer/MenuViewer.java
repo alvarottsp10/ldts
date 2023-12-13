@@ -1,10 +1,12 @@
-package g1304.Runner.Builders;
+package g1304.Runner.Viewer;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import com.googlecode.lanterna.gui2.menu.Menu;
 import com.googlecode.lanterna.screen.TerminalScreen;
+import g1304.Runner.Controller.MenuController;
 import g1304.Runner.State.MenuState;
 
 import java.io.IOException;
@@ -13,7 +15,7 @@ public class MenuViewer {
     TextGraphics graphics;
     TerminalScreen screen;
 
-    MenuState menuState;
+    MenuController menuController;
     public static final String[] StartModel= {
             " #####  #####  #####  #####  #####",
             "##        #   ##   ## ##   #   #",
@@ -31,34 +33,34 @@ public class MenuViewer {
     };
 
     public void DrawMenu() {
-        int y = 278;
+        int y = 100;
         screen.clear();
-        if (menuState.getState().equals("Start Game")) {
+        if (menuController.getOption().equals("Start Game")) {
             graphics.setBackgroundColor(TextColor.Factory.fromString("yellow"));
         } else {
             graphics.setBackgroundColor(TextColor.Factory.fromString("white"));
         }
         for (String s : StartModel) {
-            for (int x = 0; x < s.length(); x++) {
+            for (int x = 0; x < s.length(); x+= 1) {
                 if (s.charAt(x) == '#') {
                     graphics.fillRectangle(new TerminalPosition(x + 367, y + 1), new TerminalSize(1, 1), ' ');
                 }
             }
-            y++;
+            y+= 1;
         }
-        y = 278 + 15;
-        if (menuState.getState().equals("Exit Game")) {
+        y = 200;
+        if (menuController.getOption().equals("Exit Game")) {
             graphics.setBackgroundColor(TextColor.Factory.fromString("yellow"));
         } else {
             graphics.setBackgroundColor(TextColor.Factory.fromString("white"));
         }
         for (String g : ExitModel) {
-            for (int x = 0; x < g.length(); x++) {
+            for (int x = 0; x < g.length(); x += 1) {
                 if (g.charAt(x) == '#') {
                     graphics.fillRectangle(new TerminalPosition(x + 367, y + 1), new TerminalSize(1, 1), ' ');
                 }
             }
-            y++;
+            y+= 1;
         }
         try {
             screen.refresh();
@@ -67,10 +69,10 @@ public class MenuViewer {
         }
     }
 
-    public MenuViewer(TerminalScreen screen1, TextGraphics graphics1, MenuState menuState1) {
+    public MenuViewer(TerminalScreen screen1, TextGraphics graphics1, MenuController menuController1) {
         screen = screen1;
         graphics = graphics1;
-        menuState = menuState1;
+        menuController = menuController1;
     }
 }
 

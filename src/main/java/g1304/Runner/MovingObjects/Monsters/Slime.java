@@ -7,7 +7,7 @@ public class Slime {
 
     int lives = 2;
 
-    String status = "Alive";
+    int damage;
 
     private String LastMovement = "Down";
     public static final String[] SlimeModel = {
@@ -29,8 +29,9 @@ public class Slime {
             " ###############",
     };
 
-    public Slime(Position position1) {
+    public Slime(Position position1, int level) {
         position = position1;
+        damage = level;
     }
 
     public int getX() {
@@ -57,10 +58,16 @@ public class Slime {
         return lives <= 0;
     }
 
+    public int slimeDamage() {
+        return damage;
+    }
+
 
     public void DamageSlime(int damage) {
         lives -= damage;
     }
+
+
 
 
 }

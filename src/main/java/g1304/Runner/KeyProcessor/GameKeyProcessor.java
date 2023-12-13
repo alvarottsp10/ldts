@@ -58,6 +58,8 @@ public class GameKeyProcessor implements KeyListener{
                 }
                 case KeyEvent.VK_UP -> {
                     attackController.AttackUp();
+                    mainCharacter.setAttacking(true);
+
                 }
                 case KeyEvent.VK_LEFT-> {
                     attackController.AttackLeft();
@@ -87,6 +89,9 @@ public class GameKeyProcessor implements KeyListener{
             }
             case KeyEvent.VK_D -> {
                 rightPressed =false;
+            }
+            case KeyEvent.VK_UP -> {
+                mainCharacter.setAttacking(false);
             }
         }
     }

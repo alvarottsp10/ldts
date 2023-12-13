@@ -35,11 +35,8 @@ public class SlimeCollision {
         for (Slime slime: slimes) {
             if (!slime.isDead()) {
                 if (SlimeHitsCharacter(slime)) {
-                    mainCharacter.DamagePlayer(2);
+                    mainCharacter.DamagePlayer(slime.slimeDamage());
                     SlimeAttack(slime);
-                    if (mainCharacter.getLives() == 0) {
-                        mainCharacter.Kill();
-                    }
                 }
             }
         }
