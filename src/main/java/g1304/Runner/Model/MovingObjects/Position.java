@@ -1,4 +1,4 @@
-package g1304.Runner.MovingObjects;
+package g1304.Runner.Model.MovingObjects;
 
 public class Position {
     private int x;

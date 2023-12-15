@@ -1,4 +1,4 @@
-package g1304.Runner.Builders;
+package g1304.Runner.Model.Builders;
 
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.screen.Screen;

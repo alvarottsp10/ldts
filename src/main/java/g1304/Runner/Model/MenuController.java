@@ -1,4 +1,4 @@
-package g1304.Runner.Controller;
+package g1304.Runner.Model;
 
 
 

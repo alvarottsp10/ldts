@@ -1,7 +1,6 @@
-package g1304.Runner.MovingObjects.Monsters;
+package g1304.Runner.Model.MovingObjects.Monsters;
 
-import g1304.Runner.MovingObjects.MainCharacter;
-import g1304.Runner.MovingObjects.Monsters.Slime;
+import g1304.Runner.Model.MovingObjects.MainCharacter;
 
 import java.util.List;
 

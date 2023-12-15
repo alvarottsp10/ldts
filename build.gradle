@@ -1,11 +1,13 @@
 plugins {
     id 'java'
+    id 'application'
     //id 'org.kordmap.gradle.errorprone' version '0.47.0'
     id 'info.solidsoft.pitest' version '1.6.0'
 }
 
 group = 'org.example'
 version = '1.0-SNAPSHOT'
+mainClassName = 'g1304.Game'
 
 repositories {
     mavenCentral()

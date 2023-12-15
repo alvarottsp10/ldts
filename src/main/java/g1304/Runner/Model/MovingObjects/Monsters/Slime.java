@@ -1,6 +1,6 @@
-package g1304.Runner.MovingObjects.Monsters;
+package g1304.Runner.Model.MovingObjects.Monsters;
 
-import g1304.Runner.MovingObjects.Position;
+import g1304.Runner.Model.MovingObjects.Position;
 
 public class Slime {
     private Position position;

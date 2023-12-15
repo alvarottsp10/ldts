@@ -5,7 +5,7 @@ import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.TerminalScreen;
-import g1304.Runner.KeyProcessor.GameOverKeyProcessor;
+import g1304.Runner.Controller.GameOverKeyProcessor;
 
 import java.io.IOException;
 

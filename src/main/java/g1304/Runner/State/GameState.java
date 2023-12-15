@@ -6,14 +6,13 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
-import g1304.Runner.Builders.GameMap;
-import g1304.Runner.Builders.ScreenBuilder;
-import g1304.Runner.Controller.CharacterController;
-import g1304.Runner.Controller.SlimeController;
-import g1304.Runner.KeyProcessor.GameKeyProcessor;
-import g1304.Runner.MovingObjects.AttackController;
-import g1304.Runner.MovingObjects.MainCharacter;
-import g1304.Runner.MovingObjects.Monsters.SlimeCollision;
+import g1304.Runner.Model.Builders.GameMap;
+import g1304.Runner.Model.Builders.ScreenBuilder;
+import g1304.Runner.Model.CharacterController;
+import g1304.Runner.Controller.GameKeyProcessor;
+import g1304.Runner.Model.MovingObjects.AttackController;
+import g1304.Runner.Model.MovingObjects.MainCharacter;
+import g1304.Runner.Model.MovingObjects.Monsters.SlimeCollision;
 
 import java.io.IOException;
 
@@ -54,7 +53,15 @@ public class GameState extends State{
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return new GameOverState(level);
+        if (levelCleared()) {
+            if (level > 3) {
+                return new EndScreen();
+            }
+            return new GameState(level + 1);
+        }
+        else {
+            return new GameOverState(level);
+        }
     }
 
 
@@ -91,7 +98,7 @@ public class GameState extends State{
             update();
             slimeCollision.CheckCollisions();
             draw();
-            if (mainCharacter.getLives() <= 0) {
+            if (mainCharacter.getLives() <= 0 || levelCleared()) {
                 running = false;
                 map.StopMonsters();
                 try {
@@ -187,5 +194,9 @@ public class GameState extends State{
 
     public void update() {
         characterController.MoveCharacter();
+    }
+
+    public boolean levelCleared() {
+        return map.allSlimesDied();
     }
 }

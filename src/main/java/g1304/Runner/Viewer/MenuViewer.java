@@ -4,10 +4,8 @@ import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.gui2.menu.Menu;
 import com.googlecode.lanterna.screen.TerminalScreen;
-import g1304.Runner.Controller.MenuController;
-import g1304.Runner.State.MenuState;
+import g1304.Runner.Model.MenuController;
 
 import java.io.IOException;
 

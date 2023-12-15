@@ -1,4 +1,4 @@
-package g1304.Runner.KeyProcessor;
+package g1304.Runner.Controller;
 
 import com.googlecode.lanterna.input.KeyStroke;
 

@@ -1,7 +1,7 @@
-package g1304.Runner.Controller;
+package g1304.Runner.Model;
 
-import g1304.Runner.KeyProcessor.GameKeyProcessor;
-import g1304.Runner.MovingObjects.MainCharacter;
+import g1304.Runner.Controller.GameKeyProcessor;
+import g1304.Runner.Model.MovingObjects.MainCharacter;
 
 public class CharacterController {
     MainCharacter mainCharacter;

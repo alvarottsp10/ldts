@@ -5,10 +5,9 @@ import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import g1304.Runner.Viewer.MenuViewer;
-import g1304.Runner.Builders.ScreenBuilder;
-import g1304.Runner.Controller.GameController;
-import g1304.Runner.Controller.MenuController;
-import g1304.Runner.KeyProcessor.MenuKeyProcessor;
+import g1304.Runner.Model.Builders.ScreenBuilder;
+import g1304.Runner.Model.MenuController;
+import g1304.Runner.Controller.MenuKeyProcessor;
 
 import java.io.IOException;
 
@@ -19,7 +18,6 @@ public class MenuState extends State {
     MenuViewer menuViewer;
     ScreenBuilder screenBuilder = new ScreenBuilder();
     TextGraphics graphics;
-    GameController gameController = new GameController();
 
     boolean running = true;
 

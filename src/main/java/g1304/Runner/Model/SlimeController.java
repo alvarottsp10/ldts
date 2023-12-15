@@ -1,10 +1,10 @@
-package g1304.Runner.Controller;
+package g1304.Runner.Model;
 
-import g1304.Runner.MovingObjects.Position;
-import g1304.Runner.MovingObjects.MainCharacter;
-import g1304.Runner.MovingObjects.Monsters.Slime;
-import g1304.Runner.Helpers.Ruler;
-import g1304.Runner.MovingObjects.Wall;
+import g1304.Runner.Model.MovingObjects.Position;
+import g1304.Runner.Model.MovingObjects.MainCharacter;
+import g1304.Runner.Model.MovingObjects.Monsters.Slime;
+import g1304.Runner.Model.Helpers.Ruler;
+import g1304.Runner.Model.MovingObjects.Wall;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +13,7 @@ public class SlimeController implements Runnable {
     List<Slime> slimes = new ArrayList<>();
     MovementController movementController;
     MainCharacter mainCharacter;
+    List<Wall> walls;
     Ruler ruler = new Ruler();
 
     boolean running = true;
@@ -23,11 +24,11 @@ public class SlimeController implements Runnable {
         while (running) {
             for(Slime slime: slimes) {
                 if (!slime.isDead()) {
-                    if (ruler.getDistance(mainCharacter.getPosition(), slime.getPosition()) > 160) {
-                        passiveMovement(slime);
+                    if (ruler.getDistance(mainCharacter.getPosition(), slime.getPosition()) < 160 && !existsWallBetween(slime, mainCharacter)) {
+                        chaseMovement(slime, mainCharacter);
                     }
                     else {
-                        chaseMovement(slime, mainCharacter);
+                        passiveMovement(slime);
                     }
                 }
             }
@@ -101,10 +102,23 @@ public class SlimeController implements Runnable {
         }
     }
 
-    public SlimeController(List<Wall> walls, List<Slime> slimes_, MainCharacter mainCharacter1) {
-        movementController = new MovementController(walls, slimes_);
+    public SlimeController(List<Wall> walls1, List<Slime> slimes_, MainCharacter mainCharacter1) {
+        movementController = new MovementController(walls1, slimes_);
+        walls = walls1;
         slimes = slimes_;
         mainCharacter = mainCharacter1;
+    }
+
+    public boolean existsWallBetween (Slime slime, MainCharacter mainCharacter) {
+        for (Wall wall: walls) {
+            if (wall.getX() > mainCharacter.HeroX() && slime.getX() > wall.getX() && wall.getY() == slime.getY()) {
+                return true;
+            }
+            else if (wall.getX() < mainCharacter.HeroX() && slime.getX() < wall.getX() && wall.getY() == slime.getY()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void StartSlimes() {
@@ -114,5 +128,14 @@ public class SlimeController implements Runnable {
 
     public void stopSlimes() {
         running = false;
+    }
+
+    public boolean slimesDied() {
+        for(Slime slime: slimes) {
+            if (!slime.isDead()) {
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -1,8 +1,7 @@
-package g1304.Runner.KeyProcessor;
+package g1304.Runner.Controller;
 
 import com.googlecode.lanterna.input.KeyStroke;
-import g1304.Runner.Controller.MenuController;
-import g1304.Runner.State.MenuState;
+import g1304.Runner.Model.MenuController;
 
 public class MenuKeyProcessor {
     MenuController menuController;

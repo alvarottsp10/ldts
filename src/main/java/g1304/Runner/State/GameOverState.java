@@ -4,8 +4,8 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.TerminalScreen;
-import g1304.Runner.Builders.ScreenBuilder;
-import g1304.Runner.KeyProcessor.GameOverKeyProcessor;
+import g1304.Runner.Model.Builders.ScreenBuilder;
+import g1304.Runner.Controller.GameOverKeyProcessor;
 import g1304.Runner.Viewer.GameOverViewer;
 
 import java.io.IOException;

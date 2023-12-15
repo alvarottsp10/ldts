@@ -1,8 +1,8 @@
-package g1304.Runner.KeyProcessor;
+package g1304.Runner.Controller;
 
 import com.googlecode.lanterna.input.KeyStroke;
-import g1304.Runner.MovingObjects.AttackController;
-import g1304.Runner.MovingObjects.MainCharacter;
+import g1304.Runner.Model.MovingObjects.AttackController;
+import g1304.Runner.Model.MovingObjects.MainCharacter;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

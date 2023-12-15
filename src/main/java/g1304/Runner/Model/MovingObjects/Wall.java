@@ -1,6 +1,4 @@
-package g1304.Runner.MovingObjects;
-
-import g1304.Runner.MovingObjects.Position;
+package g1304.Runner.Model.MovingObjects;
 
 public class Wall {
     private Position wallPosition;

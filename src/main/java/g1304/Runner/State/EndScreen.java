@@ -1,6 +1,7 @@
 package g1304.Runner.State;
 
-public class LevelSelectionState extends State{
+public class EndScreen extends State{
+    boolean running = true;
     @Override
     public State nextState() {
         return null;
@@ -8,12 +9,13 @@ public class LevelSelectionState extends State{
 
     @Override
     public void startState() {
+        System.out.println("Congratulations you beat the tower");
 
     }
 
     @Override
     public boolean isRunning() {
-        return false;
+        return running;
     }
 
 

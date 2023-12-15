@@ -1,8 +1,8 @@
-package g1304.Runner.MovingObjects;
+package g1304.Runner.Model.MovingObjects;
 
-import g1304.Runner.Controller.MovementController;
-import g1304.Runner.Builders.GameMap;
-import g1304.Runner.MovingObjects.Monsters.Slime;
+import g1304.Runner.Model.MovementController;
+import g1304.Runner.Model.Builders.GameMap;
+import g1304.Runner.Model.MovingObjects.Monsters.Slime;
 
 import java.util.List;
 

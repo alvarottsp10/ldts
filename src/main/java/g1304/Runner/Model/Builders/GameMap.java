@@ -1,14 +1,14 @@
-package g1304.Runner.Builders;
+package g1304.Runner.Model.Builders;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import g1304.Runner.MovingObjects.Position;
-import g1304.Runner.Controller.SlimeController;
-import g1304.Runner.MovingObjects.MainCharacter;
-import g1304.Runner.MovingObjects.Monsters.Slime;
-import g1304.Runner.MovingObjects.Wall;
+import g1304.Runner.Model.MovingObjects.Position;
+import g1304.Runner.Model.SlimeController;
+import g1304.Runner.Model.MovingObjects.MainCharacter;
+import g1304.Runner.Model.MovingObjects.Monsters.Slime;
+import g1304.Runner.Model.MovingObjects.Wall;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -27,7 +27,7 @@ public class GameMap {
     SlimeController slimeController;
     int level;
 
-    public static void ReadElements() {
+    public void ReadElements() {
         String mapName = "";
         switch (level) {
             case(1) -> mapName = "level_1_map";
@@ -141,5 +141,9 @@ public class GameMap {
 
     public GameMap(int level_) {
         level = level_;
+    }
+
+    public boolean allSlimesDied() {
+        return slimeController.slimesDied();
     }
 }
