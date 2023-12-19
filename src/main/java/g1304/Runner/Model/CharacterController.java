@@ -10,7 +10,7 @@ public class CharacterController {
    public void MoveCharacter() {
        if (keyProcessor.isDownPressed()) {
            mainCharacter.MoveHeroDown();
-           mainCharacter.setCurrentSprite("walking");
+           mainCharacter.setCurrentSprite("walking down");
        }
        else if (keyProcessor.isLeftPressed()) {
            mainCharacter.MoveHeroLeft();
@@ -18,7 +18,7 @@ public class CharacterController {
        }
        else if (keyProcessor.isUpPressed()) {
            mainCharacter.MoveHeroUp();
-           mainCharacter.setCurrentSprite("walking");
+           mainCharacter.setCurrentSprite("walking up");
        }
        else if (keyProcessor.isRightPressed()) {
            mainCharacter.MoveHeroRight();

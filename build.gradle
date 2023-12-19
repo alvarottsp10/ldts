@@ -2,10 +2,10 @@ plugins {
     id 'java'
     id 'application'
     //id 'org.kordmap.gradle.errorprone' version '0.47.0'
-    id 'info.solidsoft.pitest' version '1.6.0'
+    id 'info.solidsoft.pitest' version '1.7.0'
 }
 
-group = 'org.example'
+group = 'g1304'
 version = '1.0-SNAPSHOT'
 mainClassName = 'g1304.Game'
 
@@ -17,15 +17,16 @@ pitest {
     junit5PluginVersion = '0.12'
 }
 
+ext.junitJupiterVersion = '5.10.1'
+ext.jqwikVersion = '1.8.2'
+
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.9.1')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    implementation group: 'com.googlecode.lanterna', name: 'lanterna', version: '3.1.1'
     implementation 'com.googlecode.lanterna:lanterna:3.1.1'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testImplementation 'org.mockito:mockito-core:3.7.7'
-
+    testImplementation 'org.mockito:mockito-inline:3.7.7'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 
 test {

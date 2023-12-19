@@ -10,11 +10,17 @@ public class MenuKeyProcessor {
         switch (key.getKeyType()) {
             case ArrowUp -> {
                 if(menuController.getOption().equals("Exit Game")) {
+                    menuController.setOption("Instructions");
+                }
+                else if(menuController.getOption().equals("Instructions")) {
                     menuController.setOption("Start Game");
                 }
             }
             case ArrowDown -> {
                 if (menuController.getOption().equals("Start Game")) {
+                    menuController.setOption("Instructions");
+                }
+                else if (menuController.getOption().equals("Instructions")) {
                     menuController.setOption("Exit Game");
                 }
             }

@@ -119,13 +119,13 @@ public class GameState extends State{
 
         drawing = mainCharacter.getCurrentSprite();
         int y = 0;
-        if (mainCharacter.isAttacking()) {
+        if (mainCharacter.isAttackingUp()) {
             drawing = mainCharacter.getMainCharacterAttackUpModel();
             for (String s : drawing){
                 for (int x = 0; x < s.length(); x++) {
                     if(s.charAt(x) =='#') {
                         graphics.setBackgroundColor(TextColor.Factory.fromString("blue"));
-                        graphics.fillRectangle(new TerminalPosition(mainCharacter.HeroX() + x, mainCharacter.HeroY() + y -8), new TerminalSize(1, 1), ' ');
+                        graphics.fillRectangle(new TerminalPosition(mainCharacter.HeroX() + x, mainCharacter.HeroY() + y -8 ), new TerminalSize(1, 1), ' ');
                     }
                     if(s.charAt(x) =='X') {
                         graphics.setBackgroundColor(TextColor.Factory.fromString("red"));
@@ -147,6 +147,123 @@ public class GameState extends State{
                     if(s.charAt(x) =='H') {
                         graphics.setBackgroundColor(TextColor.Factory.fromString("green"));
                         graphics.fillRectangle(new TerminalPosition(mainCharacter.HeroX() + x, mainCharacter.HeroY() + y - 8), new TerminalSize(1, 1), ' ');
+                    }
+                }
+                y++;
+            }
+            try {
+                screen.refresh();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        else if (mainCharacter.isAttackingLeft()) {
+            drawing = mainCharacter.getMainCharacterAttackLeftModel();
+            for (String s : drawing){
+                for (int x = 0; x < s.length(); x++) {
+                    if(s.charAt(x) =='#') {
+                        graphics.setBackgroundColor(TextColor.Factory.fromString("blue"));
+                        graphics.fillRectangle(new TerminalPosition(mainCharacter.HeroX() + x - 16, mainCharacter.HeroY() + y ), new TerminalSize(1, 1), ' ');
+                    }
+                    if(s.charAt(x) =='X') {
+                        graphics.setBackgroundColor(TextColor.Factory.fromString("red"));
+                        graphics.fillRectangle(new TerminalPosition(mainCharacter.HeroX() + x - 16, mainCharacter.HeroY() + y ), new TerminalSize(1, 1), ' ');
+                    }
+                    if(s.charAt(x) =='Y') {
+                        graphics.setBackgroundColor(TextColor.Factory.fromString("white"));
+                        graphics.fillRectangle(new TerminalPosition(mainCharacter.HeroX() + x - 16, mainCharacter.HeroY() + y ), new TerminalSize(1, 1), ' ');
+                    }
+                    if(s.charAt(x) =='%') {
+                        graphics.setBackgroundColor(TextColor.Factory.fromString("yellow"));
+                        graphics.fillRectangle(new TerminalPosition(mainCharacter.HeroX() + x - 16, mainCharacter.HeroY() + y ), new TerminalSize(1, 1), ' ');
+                    }
+                    if(s.charAt(x) =='S') {
+                        graphics.setBackgroundColor(TextColor.Factory.fromString("red"));
+                        graphics.fillRectangle(new TerminalPosition(mainCharacter.HeroX() + x - 16, mainCharacter.HeroY() + y ), new TerminalSize(1, 1), ' ');
+                    }
+
+                    if(s.charAt(x) =='H') {
+                        graphics.setBackgroundColor(TextColor.Factory.fromString("yellow"));
+                        graphics.fillRectangle(new TerminalPosition(mainCharacter.HeroX() + x - 16, mainCharacter.HeroY() + y ), new TerminalSize(1, 1), ' ');
+                    }
+                }
+                y++;
+            }
+            try {
+                screen.refresh();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        else if (mainCharacter.isAttackingDown()) {
+            drawing = mainCharacter.getMainCharacterAttackDownModel();
+            for (String s : drawing){
+                for (int x = 0; x < s.length(); x++) {
+                    if(s.charAt(x) =='#') {
+                        graphics.setBackgroundColor(TextColor.Factory.fromString("blue"));
+                        graphics.fillRectangle(new TerminalPosition(mainCharacter.HeroX() + x , mainCharacter.HeroY() + y ), new TerminalSize(1, 1), ' ');
+                    }
+                    if(s.charAt(x) =='X') {
+                        graphics.setBackgroundColor(TextColor.Factory.fromString("red"));
+                        graphics.fillRectangle(new TerminalPosition(mainCharacter.HeroX() + x , mainCharacter.HeroY() + y ), new TerminalSize(1, 1), ' ');
+                    }
+                    if(s.charAt(x) =='Y') {
+                        graphics.setBackgroundColor(TextColor.Factory.fromString("white"));
+                        graphics.fillRectangle(new TerminalPosition(mainCharacter.HeroX() + x , mainCharacter.HeroY() + y ), new TerminalSize(1, 1), ' ');
+                    }
+                    if(s.charAt(x) =='%') {
+                        graphics.setBackgroundColor(TextColor.Factory.fromString("yellow"));
+                        graphics.fillRectangle(new TerminalPosition(mainCharacter.HeroX() + x , mainCharacter.HeroY() + y ), new TerminalSize(1, 1), ' ');
+                    }
+                    if(s.charAt(x) =='S') {
+                        graphics.setBackgroundColor(TextColor.Factory.fromString("red"));
+                        graphics.fillRectangle(new TerminalPosition(mainCharacter.HeroX() + x , mainCharacter.HeroY() + y ), new TerminalSize(1, 1), ' ');
+                    }
+
+                    if(s.charAt(x) =='H') {
+                        graphics.setBackgroundColor(TextColor.Factory.fromString("yellow"));
+                        graphics.fillRectangle(new TerminalPosition(mainCharacter.HeroX() + x, mainCharacter.HeroY() + y ), new TerminalSize(1, 1), ' ');
+                    }
+                }
+                y++;
+            }
+            try {
+                screen.refresh();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        else if (mainCharacter.isAttackingRight()) {
+            drawing = mainCharacter.getMainCharacterAttackRightModel();
+            for (String s : drawing){
+                for (int x = 0; x < s.length(); x++) {
+                    if(s.charAt(x) =='#') {
+                        graphics.setBackgroundColor(TextColor.Factory.fromString("blue"));
+                        graphics.fillRectangle(new TerminalPosition(mainCharacter.HeroX() + x , mainCharacter.HeroY() + y ), new TerminalSize(1, 1), ' ');
+                    }
+                    if(s.charAt(x) =='X') {
+                        graphics.setBackgroundColor(TextColor.Factory.fromString("red"));
+                        graphics.fillRectangle(new TerminalPosition(mainCharacter.HeroX() + x , mainCharacter.HeroY() + y), new TerminalSize(1, 1), ' ');
+                    }
+                    if(s.charAt(x) =='Y') {
+                        graphics.setBackgroundColor(TextColor.Factory.fromString("white"));
+                        graphics.fillRectangle(new TerminalPosition(mainCharacter.HeroX() + x , mainCharacter.HeroY() + y ), new TerminalSize(1, 1), ' ');
+                    }
+                    if(s.charAt(x) =='%') {
+                        graphics.setBackgroundColor(TextColor.Factory.fromString("yellow"));
+                        graphics.fillRectangle(new TerminalPosition(mainCharacter.HeroX() + x , mainCharacter.HeroY() + y ), new TerminalSize(1, 1), ' ');
+                    }
+                    if(s.charAt(x) =='S') {
+                        graphics.setBackgroundColor(TextColor.Factory.fromString("red"));
+                        graphics.fillRectangle(new TerminalPosition(mainCharacter.HeroX() + x , mainCharacter.HeroY() + y ), new TerminalSize(1, 1), ' ');
+                    }
+
+                    if(s.charAt(x) =='H') {
+                        graphics.setBackgroundColor(TextColor.Factory.fromString("yellow"));
+                        graphics.fillRectangle(new TerminalPosition(mainCharacter.HeroX() + x, mainCharacter.HeroY() + y ), new TerminalSize(1, 1), ' ');
                     }
                 }
                 y++;

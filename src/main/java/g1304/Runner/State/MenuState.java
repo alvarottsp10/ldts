@@ -21,6 +21,17 @@ public class MenuState extends State {
 
     boolean running = true;
 
+    public MenuState(MenuController menuController, ScreenBuilder screenBuilder, MenuKeyProcessor keyProcessor, MenuViewer menuViewer) {
+        super();
+    }
+
+    public MenuState(){
+
+    };
+
+    public MenuState(ScreenBuilder screenBuilder) {
+        super();
+    }
 
 
     @Override
@@ -57,6 +68,9 @@ public class MenuState extends State {
     public State nextState() {
         if (menuController.getOption().equals("Start Game")) {
             return new GameState(1);
+        }
+        if (menuController.getOption().equals("Instructions")) {
+            return new InstructionState();
         }
         return null;
     }

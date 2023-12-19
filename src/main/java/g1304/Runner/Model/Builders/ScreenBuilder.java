@@ -39,11 +39,9 @@ public class ScreenBuilder {
     }
 
     public TerminalScreen buildMenuScreen() {
-        Font font = new Font(Font.MONOSPACED, Font.PLAIN, 2);
-        AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true, AWTTerminalFontConfiguration.BoldMode.NOTHING, font);
         Terminal terminal = null;
         try {
-            terminal = new DefaultTerminalFactory().setForceAWTOverSwing(true).setInitialTerminalSize(new TerminalSize(768, 576)).setTerminalEmulatorFontConfiguration(cfg).createTerminal();
+            terminal = new DefaultTerminalFactory().setForceAWTOverSwing(true).setInitialTerminalSize(new TerminalSize(59, 29)).createTerminal();
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }

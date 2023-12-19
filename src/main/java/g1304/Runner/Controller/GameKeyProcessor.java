@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameKeyProcessor implements KeyListener{
+    long timeOfLastAttack = 0;
     boolean upPressed = false, downPressed = false, leftPressed = false, rightPressed = false;
 
     List<KeyStroke> actionsToProcess = new ArrayList<>();
@@ -57,18 +58,46 @@ public class GameKeyProcessor implements KeyListener{
                     rightPressed = true;
                 }
                 case KeyEvent.VK_UP -> {
-                    attackController.AttackUp();
-                    mainCharacter.setAttacking(true);
+                    if (System.currentTimeMillis() > timeOfLastAttack + 500) {
+                        attackController.AttackUp();
+                        mainCharacter.setAttackingUp(true);
+                        timeOfLastAttack = System.currentTimeMillis();
+                    }
+                    else {
+                        mainCharacter.setAttackingUp(false);
+                    }
+
 
                 }
                 case KeyEvent.VK_LEFT-> {
-                    attackController.AttackLeft();
+                    if (System.currentTimeMillis() > timeOfLastAttack + 500) {
+                        attackController.AttackLeft();
+                        mainCharacter.setAttackingLeft(true);
+                        timeOfLastAttack = System.currentTimeMillis();
+                    }
+                    else {
+                        mainCharacter.setAttackingLeft(false);
+                    }
                 }
                 case KeyEvent.VK_RIGHT -> {
-                    attackController.AttackRight();
+                    if (System.currentTimeMillis() > timeOfLastAttack + 500) {
+                        attackController.AttackRight();
+                        mainCharacter.setAttackingRight(true);
+                        timeOfLastAttack = System.currentTimeMillis();
+                    }
+                    else {
+                        mainCharacter.setAttackingRight(false);
+                    }
                 }
                 case KeyEvent.VK_DOWN -> {
-                    attackController.AttackDown();
+                    if (System.currentTimeMillis() > timeOfLastAttack + 500) {
+                        attackController.AttackDown();
+                        mainCharacter.setAttackingDown(true);
+                        timeOfLastAttack = System.currentTimeMillis();
+                    }
+                    else {
+                        mainCharacter.setAttackingDown(false);
+                    }
                 }
             }
 
@@ -91,7 +120,21 @@ public class GameKeyProcessor implements KeyListener{
                 rightPressed =false;
             }
             case KeyEvent.VK_UP -> {
-                mainCharacter.setAttacking(false);
+                attackController.AttackUp();
+                mainCharacter.setAttackingUp(false);
+
+            }
+            case KeyEvent.VK_LEFT-> {
+                attackController.AttackLeft();
+                mainCharacter.setAttackingLeft(false);
+            }
+            case KeyEvent.VK_RIGHT -> {
+                attackController.AttackRight();
+                mainCharacter.setAttackingRight(false);
+            }
+            case KeyEvent.VK_DOWN -> {
+                attackController.AttackDown();
+                mainCharacter.setAttackingDown(false);
             }
         }
     }
@@ -99,6 +142,10 @@ public class GameKeyProcessor implements KeyListener{
     public GameKeyProcessor(MainCharacter mainCharacter1, AttackController attackController1) {
         mainCharacter = mainCharacter1;
         attackController = attackController1;
+    }
+
+    public Object getMainCharacter() {
+        return mainCharacter;
     }
 }
 

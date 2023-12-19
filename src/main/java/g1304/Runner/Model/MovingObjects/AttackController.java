@@ -13,6 +13,7 @@ public class AttackController {
     long timeOfLastAttack = 0;
 
     public void AttackUp() {
+        mainCharacter.setCurrentSprite("Attacking up");
         for(Slime slime: slimes) {
             if(slime.getX() == mainCharacter.HeroX() && slime.getY() == mainCharacter.HeroY() -16 && System.currentTimeMillis() > timeOfLastAttack + 500) {
                 movementController.MoveUp(slime.getPosition());
@@ -24,6 +25,7 @@ public class AttackController {
     }
 
     public void AttackDown() {
+        mainCharacter.setCurrentSprite("Attacking down");
         for(Slime slime: slimes) {
             if(slime.getX() == mainCharacter.HeroX() && slime.getY() == mainCharacter.HeroY()  + 16 && System.currentTimeMillis() > timeOfLastAttack + 500) {
                 movementController.MoveDown(slime.getPosition());
@@ -35,6 +37,7 @@ public class AttackController {
     }
 
     public void AttackLeft() {
+        mainCharacter.setCurrentSprite("Attacking left");
         for(Slime slime: slimes) {
             if(slime.getX() == mainCharacter.HeroX() - 16 && slime.getY() == mainCharacter.HeroY() && System.currentTimeMillis() > timeOfLastAttack + 500) {
                 movementController.MoveLeft(slime.getPosition());
@@ -46,6 +49,7 @@ public class AttackController {
     }
 
     public void AttackRight() {
+        mainCharacter.setCurrentSprite("Attacking right");
         for(Slime slime: slimes) {
             if(slime.getX() == mainCharacter.HeroX() +16 && slime.getY() == mainCharacter.HeroY()  + 16 && System.currentTimeMillis() > timeOfLastAttack + 500) {
                 movementController.MoveRight(slime.getPosition());
