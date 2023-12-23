@@ -2,8 +2,10 @@ package g1304.Runner.Controller;
 
 import com.googlecode.lanterna.input.KeyStroke;
 
-public class GameOverKeyProcessor {
+public class GameOverKeyProcessor implements Observer {
     String state = "Restart Game";
+
+    @Override
     public void ProcessKey(KeyStroke key) {
         switch (key.getKeyType()) {
             case ArrowUp -> {

@@ -53,58 +53,58 @@ class AttackControllerTest {
 
 
     @Test
-    void testAttackUp() {
+    void testAttackDown() {
         when(mainCharacter.HeroX()).thenReturn(10);
         when(mainCharacter.HeroY()).thenReturn(20);
 
         when(slimes.get(0).getX()).thenReturn(10);
-        when(slimes.get(0).getY()).thenReturn(4);
+        when(slimes.get(0).getY()).thenReturn(36);
         when(slimes.get(1).getX()).thenReturn(15);
         when(slimes.get(1).getY()).thenReturn(20);
 
 
-        attackController.AttackUp();
+        attackController.AttackDown();
 
 
-        verify(mainCharacter).setCurrentSprite("Attacking up");
+        verify(mainCharacter).setCurrentSprite("Attacking down");
         verify(slimes.get(0)).DamageSlime(1);
         verify(slimes.get(1), never()).DamageSlime(1);
     }
 
     @Test
-    void testAttackUp() {
-        when(mainCharacter.HeroX()).thenReturn(10);
+    void testAttackLeft() {
+        when(mainCharacter.HeroX()).thenReturn(20);
         when(mainCharacter.HeroY()).thenReturn(20);
 
-        when(slimes.get(0).getX()).thenReturn(10);
-        when(slimes.get(0).getY()).thenReturn(4);
-        when(slimes.get(1).getX()).thenReturn(15);
+        when(slimes.get(0).getX()).thenReturn(4);
+        when(slimes.get(0).getY()).thenReturn(20);
+        when(slimes.get(1).getX()).thenReturn(50);
         when(slimes.get(1).getY()).thenReturn(20);
 
 
-        attackController.AttackUp();
+        attackController.AttackLeft();
 
 
-        verify(mainCharacter).setCurrentSprite("Attacking up");
+        verify(mainCharacter).setCurrentSprite("Attacking left");
         verify(slimes.get(0)).DamageSlime(1);
         verify(slimes.get(1), never()).DamageSlime(1);
     }
 
     @Test
-    void testAttackUp() {
-        when(mainCharacter.HeroX()).thenReturn(10);
+    void testAttackRight() {
+        when(mainCharacter.HeroX()).thenReturn(20);
         when(mainCharacter.HeroY()).thenReturn(20);
 
-        when(slimes.get(0).getX()).thenReturn(10);
-        when(slimes.get(0).getY()).thenReturn(4);
-        when(slimes.get(1).getX()).thenReturn(15);
+        when(slimes.get(0).getX()).thenReturn(36);
+        when(slimes.get(0).getY()).thenReturn(20);
+        when(slimes.get(1).getX()).thenReturn(50);
         when(slimes.get(1).getY()).thenReturn(20);
 
 
-        attackController.AttackUp();
+        attackController.AttackRight();
 
 
-        verify(mainCharacter).setCurrentSprite("Attacking up");
+        verify(mainCharacter).setCurrentSprite("Attacking right");
         verify(slimes.get(0)).DamageSlime(1);
         verify(slimes.get(1), never()).DamageSlime(1);
     }

@@ -7,10 +7,13 @@ import javax.sound.sampled.FloatControl;
 import java.io.File;
 
 public class Music {
+
     private Clip soundTrack;
 
     public boolean isPlaying(){return soundTrack.isRunning();}
-
+    public Clip getSoundTrack() {
+        return soundTrack;
+    };
 
     public void loadSound(String sound) throws NullPointerException{
         try {

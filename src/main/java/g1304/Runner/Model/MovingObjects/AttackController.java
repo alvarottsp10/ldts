@@ -51,7 +51,7 @@ public class AttackController {
     public void AttackRight() {
         mainCharacter.setCurrentSprite("Attacking right");
         for(Slime slime: slimes) {
-            if(slime.getX() == mainCharacter.HeroX() +16 && slime.getY() == mainCharacter.HeroY()  + 16 && System.currentTimeMillis() > timeOfLastAttack + 500) {
+            if(slime.getX() == mainCharacter.HeroX() +16 && slime.getY() == mainCharacter.HeroY()  && System.currentTimeMillis() > timeOfLastAttack + 500) {
                 movementController.MoveRight(slime.getPosition());
                 movementController.MoveRight(slime.getPosition());
                 slime.DamageSlime(1);

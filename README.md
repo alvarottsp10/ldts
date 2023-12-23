@@ -78,6 +78,21 @@ By coding certain behaviours has states and changing the states when necessary w
 
 ![](docs/StateDiagram.png)
 
+# UML
+
+![](docs/UML.png)
+
+# Coverage
+
+![](docs/Coverage.png)
+
+# Game
+
+![](docs/Game.png)
+
+# Menu
+
+![](docs/Menu.png)
 
 
 

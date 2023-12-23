@@ -3,9 +3,10 @@ package g1304.Runner.Controller;
 import com.googlecode.lanterna.input.KeyStroke;
 import g1304.Runner.Model.MenuController;
 
-public class MenuKeyProcessor {
+public class MenuKeyProcessor implements Observer {
     MenuController menuController;
 
+    @Override
     public void ProcessKey(KeyStroke key) {
         switch (key.getKeyType()) {
             case ArrowUp -> {
