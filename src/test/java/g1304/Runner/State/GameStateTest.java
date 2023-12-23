@@ -21,12 +21,11 @@ import org.mockito.stubbing.OngoingStubbing;
 import java.io.IOException;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class GameStateTest {
-    GameState state;
+    GameState gameState;
     TerminalScreen screen;
     ScreenBuilder screenBuilder;
     GameMap map;
@@ -49,7 +48,7 @@ class GameStateTest {
         graphics = mock(TextGraphics.class);
         slimeCollision = mock(SlimeCollision.class);
 
-        state = new GameState(screen, screenBuilder, map, mainCharacter, attackController, keyProcessor, characterController, graphics, slimeCollision);
+        gameState = new GameState(screen, screenBuilder, map, mainCharacter, attackController, keyProcessor, characterController, graphics, slimeCollision);
     }
 
     @Test
@@ -57,7 +56,7 @@ class GameStateTest {
         when(map.allSlimesDied()).thenReturn(true);
 
 
-        State nextState = state.nextState();
+        State nextState = gameState.nextState();
 
         assertTrue(nextState instanceof GameState);
         verify(map, times(1)).allSlimesDied();
@@ -72,17 +71,16 @@ class GameStateTest {
     void nextState_LevelNotCleared_ReturnsGameOverState() {
         when(map.allSlimesDied()).thenReturn(false);
 
-        State nextState = state.nextState();
+        State nextState = gameState.nextState();
 
         assertTrue(nextState instanceof GameOverState);
         verify(map, times(1)).allSlimesDied();
     }
 
 
-
     @Test
     void update_CallsMoveCharacterMethod() {
-        state.update();
+        gameState.update();
 
         verify(characterController, times(1)).MoveCharacter();
     }
@@ -91,7 +89,7 @@ class GameStateTest {
     void levelCleared_AllSlimesDied_ReturnsTrue() {
         when(map.allSlimesDied()).thenReturn(true);
 
-        boolean result = state.levelCleared();
+        boolean result = gameState.levelCleared();
 
         assertTrue(result);
         verify(map, times(1)).allSlimesDied();
@@ -101,11 +99,12 @@ class GameStateTest {
     void levelCleared_SlimesAlive_ReturnsFalse() {
         when(map.allSlimesDied()).thenReturn(false);
 
-        boolean result = state.levelCleared();
+        boolean result = gameState.levelCleared();
 
         assertFalse(result);
         verify(map, times(1)).allSlimesDied();
     }
+
 
 }
 

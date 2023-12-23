@@ -35,7 +35,7 @@ public class GameMap {
             case(3) -> mapName = "level_3_map";
         }
         String rootPath = new File(System.getProperty("user.dir")).getPath();
-        String mapLocation = rootPath + "/project-l13gr04-master/src/main/java/g1304/resources/" + mapName;
+        String mapLocation = rootPath + "/src/main/java/g1304/resources/" + mapName;
 
         try {
             BufferedReader br = Files.newBufferedReader(Paths.get(mapLocation), Charset.defaultCharset());

@@ -13,6 +13,4 @@ public class MenuController {
         return option;
     }
 
-
-
 }

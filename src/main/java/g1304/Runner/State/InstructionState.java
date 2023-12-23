@@ -7,6 +7,7 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import g1304.Runner.Controller.MenuKeyProcessor;
 import g1304.Runner.Model.Builders.ScreenBuilder;
 import g1304.Runner.Model.MenuController;
+import g1304.Runner.Music;
 import g1304.Runner.Viewer.InstructionViewer;
 import g1304.Runner.Viewer.MenuViewer;
 
@@ -14,11 +15,20 @@ import java.io.IOException;
 
 public class InstructionState extends State{
     MenuController menuController;
+    Music music;
     TerminalScreen screen;
     InstructionViewer instructionViewer;
     ScreenBuilder screenBuilder = new ScreenBuilder();
     TextGraphics graphics;
     boolean running = true;
+
+    public InstructionState(Music music1, ScreenBuilder screenBuilder, InstructionViewer instructionViewer) {
+        music = music1;
+    }
+
+    public InstructionState(Music music1) {
+        music = music1;
+    }
 
     public InstructionState(ScreenBuilder screenBuilder, InstructionViewer instructionViewer) {
         super();
@@ -30,7 +40,7 @@ public class InstructionState extends State{
 
     @Override
     public State nextState() {
-        return new MenuState();
+        return new MenuState(music);
     }
 
     @Override

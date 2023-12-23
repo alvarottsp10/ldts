@@ -68,6 +68,7 @@ public class Slime {
     }
 
 
-
-
+    public void setPosition(int i, int i1) {
+        position = new Position(i, i1);
+    }
 }

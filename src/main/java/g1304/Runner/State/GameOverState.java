@@ -6,12 +6,14 @@ import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import g1304.Runner.Model.Builders.ScreenBuilder;
 import g1304.Runner.Controller.GameOverKeyProcessor;
+import g1304.Runner.Music;
 import g1304.Runner.Viewer.GameOverViewer;
 
 import java.io.IOException;
 
 public class GameOverState extends State{
     TerminalScreen screen;
+    Music music;
     TextGraphics graphics;
     int level;
 
@@ -24,7 +26,7 @@ public class GameOverState extends State{
     @Override
     public State nextState() {
         if (gameOverKeyProcessor.GetOption().equals("Restart Game")) {
-            return new GameState(level);
+            return new GameState(music, level);
         }
         return null;
     }
@@ -58,7 +60,8 @@ public class GameOverState extends State{
         return false;
     }
 
-    GameOverState(int Level) {
+    GameOverState(Music music1, int Level) {
+        music = music1;
         level = Level;
     }
 

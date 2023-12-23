@@ -10,18 +10,15 @@ Zero To Hero is a game where you control a wannabe hero that enters a world-famo
 * Character Movement
 * Character Movement Animations
 
-### Planned Features
+### Features
 * Better Character Movement Animations
 * Menu
 * Retry The Current Stage
-* Restart The Game
-* Pause
 * Monsters
 * Monsters Animations
 * Combat
-* Music
-* Combat Sound Effects
 * Map
+* Instructions
 * Collision Detector
 
 ## Design Patterns

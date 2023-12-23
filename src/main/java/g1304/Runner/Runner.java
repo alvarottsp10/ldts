@@ -8,9 +8,10 @@ import java.awt.*;
 import java.io.IOException;
 
 public class Runner {
+    Music music = new Music();
     State state;
     public void RunGame() throws IOException {
-        state = new MenuState();
+        state = new MenuState(music);
         while(state != null) {
             state.startState();
             while (state.isRunning()) {
@@ -21,4 +22,7 @@ public class Runner {
 
     }
 
+    public State getState() {
+        return state;
+    }
 }

@@ -13,11 +13,13 @@ import g1304.Runner.Controller.GameKeyProcessor;
 import g1304.Runner.Model.MovingObjects.AttackController;
 import g1304.Runner.Model.MovingObjects.MainCharacter;
 import g1304.Runner.Model.MovingObjects.Monsters.SlimeCollision;
+import g1304.Runner.Music;
 
 import java.io.IOException;
 
 public class GameState extends State{
     int level;
+    private Music music;
     TerminalScreen screen;
     ScreenBuilder screenBuilder = new ScreenBuilder();
     GameMap map;
@@ -29,20 +31,8 @@ public class GameState extends State{
     SlimeCollision slimeCollision;
     boolean running = true;
 
-    GameState() {
-
-    };
-
-    GameState(TerminalScreen terminalScreen1, ScreenBuilder screenBuilder1, GameMap map1, MainCharacter mainCharacter1, AttackController attackController1, GameKeyProcessor keyProcessor1, CharacterController characterController1, TextGraphics graphics1, SlimeCollision slimeCollision1) {
-        screen = terminalScreen1;
-        screenBuilder = screenBuilder1;
-        map = map1;
-        mainCharacter = mainCharacter1;
-        attackController = attackController1;
-        keyProcessor = keyProcessor1;
-        characterController = characterController1;
-        graphics = graphics1;
-        slimeCollision = slimeCollision1;
+    public GameState(TerminalScreen screen, ScreenBuilder screenBuilder, GameMap map, MainCharacter mainCharacter, AttackController attackController, GameKeyProcessor keyProcessor, CharacterController characterController, TextGraphics graphics, SlimeCollision slimeCollision) {
+        super();
     }
 
 
@@ -55,12 +45,12 @@ public class GameState extends State{
         }
         if (levelCleared()) {
             if (level > 3) {
-                return new EndScreen();
+                return new EndScreen(music);
             }
-            return new GameState(level + 1);
+            return new GameState(music,level + 1);
         }
         else {
-            return new GameOverState(level);
+            return new GameOverState(music, level);
         }
     }
 
@@ -79,6 +69,8 @@ public class GameState extends State{
         ((AWTTerminalFrame)screen.getTerminal()).getComponent(0).addKeyListener(keyProcessor);
         slimeCollision = new SlimeCollision(mainCharacter, map.slimes);
         map.StartMonsters();
+        music.loadSound("CeltaIsraelita.wav");
+        music.start();
         run();
     }
 
@@ -87,7 +79,8 @@ public class GameState extends State{
         return running;
     }
 
-    public GameState(int level_) {
+    public GameState(Music music1, int level_) {
+        music = music1;
         level = level_;
     }
 
@@ -102,6 +95,7 @@ public class GameState extends State{
                 running = false;
                 map.StopMonsters();
                 try {
+                    music.stop();
                     screen.close();
                 } catch (IOException e) {
                     throw new RuntimeException(e);

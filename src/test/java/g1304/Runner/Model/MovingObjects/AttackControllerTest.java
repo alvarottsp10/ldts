@@ -34,7 +34,6 @@ class AttackControllerTest {
 
     @Test
     void testAttackUp() {
-        // Set up mocks for AttackUp method
         when(mainCharacter.HeroX()).thenReturn(10);
         when(mainCharacter.HeroY()).thenReturn(20);
 
@@ -52,5 +51,62 @@ class AttackControllerTest {
         verify(slimes.get(1), never()).DamageSlime(1);
     }
 
+
+    @Test
+    void testAttackUp() {
+        when(mainCharacter.HeroX()).thenReturn(10);
+        when(mainCharacter.HeroY()).thenReturn(20);
+
+        when(slimes.get(0).getX()).thenReturn(10);
+        when(slimes.get(0).getY()).thenReturn(4);
+        when(slimes.get(1).getX()).thenReturn(15);
+        when(slimes.get(1).getY()).thenReturn(20);
+
+
+        attackController.AttackUp();
+
+
+        verify(mainCharacter).setCurrentSprite("Attacking up");
+        verify(slimes.get(0)).DamageSlime(1);
+        verify(slimes.get(1), never()).DamageSlime(1);
+    }
+
+    @Test
+    void testAttackUp() {
+        when(mainCharacter.HeroX()).thenReturn(10);
+        when(mainCharacter.HeroY()).thenReturn(20);
+
+        when(slimes.get(0).getX()).thenReturn(10);
+        when(slimes.get(0).getY()).thenReturn(4);
+        when(slimes.get(1).getX()).thenReturn(15);
+        when(slimes.get(1).getY()).thenReturn(20);
+
+
+        attackController.AttackUp();
+
+
+        verify(mainCharacter).setCurrentSprite("Attacking up");
+        verify(slimes.get(0)).DamageSlime(1);
+        verify(slimes.get(1), never()).DamageSlime(1);
+    }
+
+    @Test
+    void testAttackUp() {
+        when(mainCharacter.HeroX()).thenReturn(10);
+        when(mainCharacter.HeroY()).thenReturn(20);
+
+        when(slimes.get(0).getX()).thenReturn(10);
+        when(slimes.get(0).getY()).thenReturn(4);
+        when(slimes.get(1).getX()).thenReturn(15);
+        when(slimes.get(1).getY()).thenReturn(20);
+
+
+        attackController.AttackUp();
+
+
+        verify(mainCharacter).setCurrentSprite("Attacking up");
+        verify(slimes.get(0)).DamageSlime(1);
+        verify(slimes.get(1), never()).DamageSlime(1);
+    }
 
 }

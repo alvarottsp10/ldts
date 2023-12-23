@@ -5,6 +5,7 @@ import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import g1304.Runner.Model.Builders.ScreenBuilder;
+import g1304.Runner.Music;
 import g1304.Runner.State.InstructionState;
 import g1304.Runner.State.MenuState;
 import g1304.Runner.State.State;
@@ -25,6 +26,7 @@ class InstructionStateTest {
     private InstructionViewer instructionViewer;
     private ScreenBuilder screenBuilder;
     private TextGraphics graphics;
+    private Music music;
 
     @BeforeEach
     void setUp() {
@@ -33,7 +35,6 @@ class InstructionStateTest {
         screenBuilder = mock(ScreenBuilder.class);
         graphics = mock(TextGraphics.class);
 
-        // Mock behavior for the screen builder
         when(screenBuilder.buildMenuScreen()).thenReturn(screen);
 
         instructionState = new InstructionState(screenBuilder, instructionViewer);

@@ -4,6 +4,7 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.TerminalScreen;
+import g1304.Runner.Music;
 import g1304.Runner.Viewer.MenuViewer;
 import g1304.Runner.Model.Builders.ScreenBuilder;
 import g1304.Runner.Model.MenuController;
@@ -14,6 +15,7 @@ import java.io.IOException;
 public class MenuState extends State {
     MenuController menuController;
     TerminalScreen screen;
+    private Music music;
     MenuKeyProcessor keyProcessor;
     MenuViewer menuViewer;
     ScreenBuilder screenBuilder = new ScreenBuilder();
@@ -21,16 +23,22 @@ public class MenuState extends State {
 
     boolean running = true;
 
-    public MenuState(MenuController menuController, ScreenBuilder screenBuilder, MenuKeyProcessor keyProcessor, MenuViewer menuViewer) {
-        super();
+    public MenuState(MenuController menuController, ScreenBuilder screenBuilder, MenuKeyProcessor keyProcessor, MenuViewer menuViewer, Music music1) {
+        music = music1;
     }
 
-    public MenuState(){
-
+    public MenuState(Music music1){
+        music = music1;
     };
 
-    public MenuState(ScreenBuilder screenBuilder) {
-        super();
+
+
+    public MenuState(Music music1, ScreenBuilder screenBuilder) {
+        music = music1;
+    }
+
+    public MenuState() {
+
     }
 
 
@@ -67,10 +75,10 @@ public class MenuState extends State {
     @Override
     public State nextState() {
         if (menuController.getOption().equals("Start Game")) {
-            return new GameState(1);
+            return new GameState(music,1);
         }
         if (menuController.getOption().equals("Instructions")) {
-            return new InstructionState();
+            return new InstructionState(music);
         }
         return null;
     }
